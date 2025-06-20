@@ -26,15 +26,17 @@ services:
 
 
   consumer:
-    build:
-      context: .
-      dockerfile: Dockerfile
+#    build:
+#      context: .
+#      dockerfile: Dockerfile
+    image: ashrith0805/kafka-python-consumer:latest
     depends_on:
       - kafka
 
   producer:
-    build:
-      context: .
-      dockerfile: Dockerfile.producer
+#    build:
+#      context: .
+#      dockerfile: Dockerfile.producer
+    image: ashrith0805/kafka-python-producer:latest
     depends_on:
       - kafka
