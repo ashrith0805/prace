@@ -3,7 +3,7 @@ from unittest.mock import patch, MagicMock
 
 class TestKafkaConsumer(unittest.TestCase):
 
-    @patch('app.consumer.KafkaConsumer')  # 👈 PATCH WHERE IT'S USED
+    @patch('consumer.KafkaConsumer')  # 👈 PATCH WHERE IT'S USED
     def test_consumer_initialization(self, mock_consumer):
         topic = "test-topic"
         broker = "localhost:9092"
