@@ -1,22 +1,19 @@
 import unittest
 from unittest.mock import patch, MagicMock
-from kafka import KafkaConsumer
 
 class TestKafkaConsumer(unittest.TestCase):
 
-    @patch('kafka.KafkaConsumer')
+    @patch('app.consumer.KafkaConsumer')  # 👈 PATCH WHERE IT'S USED
     def test_consumer_initialization(self, mock_consumer):
         topic = "test-topic"
         broker = "localhost:9092"
         mock_instance = MagicMock()
         mock_consumer.return_value = mock_instance
 
-        consumer = KafkaConsumer(
-            topic,
-            bootstrap_servers=[broker],
-            value_deserializer=lambda m: m.decode("utf-8")
-        )
+        from app import consumer  # Import after mocking
 
+        # Now, creating the consumer inside app.consumer doesn't cause a real connection
+        self.assertTrue(mock_consumer.called)
         mock_consumer.assert_called_with(
             topic,
             bootstrap_servers=[broker],
