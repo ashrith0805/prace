@@ -46,7 +46,7 @@ jobs:
           context: .
           file: Dockerfile
           push: true
-          tags: your_dockerhub_username/kafka-python-consumer:latest
+          tags: ashrith0805/kafka-python-consumer:latest
 
       - name: Build and push producer image
         uses: docker/build-push-action@v5
@@ -54,4 +54,4 @@ jobs:
           context: .
           file: Dockerfile.producer
           push: true
-          tags: your_dockerhub_username/kafka-python-producer:latest
+          tags: ashrith0805/kafka-python-producer:latest
